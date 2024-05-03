@@ -207,16 +207,16 @@ spec:
         #   kubectl describe nodes
         resources:
           requests:
-            cpu: "16"
-            memory: "8Gi"
+            cpu: "1"
+            memory: "2Gi"
           limits:
             # NOTE: Unless you have enabled the non-default Static CPU Management Policy
             # and are using an integer number of CPUs, we don't recommend setting a CPU limit.
             # See:
             #   https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#static-policy
             #   https://github.com/kubernetes/kubernetes/issues/51135
-            #cpu: "16"
-            memory: "8Gi"
+            #cpu: "1"
+            memory: "2Gi"
         ports:
         - containerPort: 26257
           hostPort: 26257
@@ -252,7 +252,7 @@ spec:
           - "/bin/bash"
           - "-ecx"
           # TODO: Replace "YOUR_IP_ADDR1_HERE,YOUR_IP_ADDR2_HERE,YOUR_IP_ADDR3_HERE" with a list of a few of the IP addresses or hostnames of the machines on which CockroachDB will be running.
-          - "exec /cockroach/cockroach start --logtostderr --certs-dir /cockroach/cockroach-certs --http-addr 0.0.0.0 --cache 25% --max-sql-memory 25% --join=YOUR_IP_ADDR1_HERE,YOUR_IP_ADDR2_HERE,YOUR_IP_ADDR3_HERE"
+          - "exec /cockroach/cockroach start --logtostderr --certs-dir /cockroach/cockroach-certs --http-addr 0.0.0.0 --cache 25% --max-sql-memory 25% --join=10.224.0.4,10.224.0.113"
       terminationGracePeriodSeconds: 60
       volumes:
       - name: datadir
